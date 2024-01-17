@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+ <title> Груминг-салон </title>
+    {% macro render_form(combo_box) %}
+      <p>Мастер:
+        <form>
+          <select name="master">
+          {% set n = len(combo_box) %}
+
+          {% for i in range(n) %}
+            {% set id_m = combo_box.loc[i, "master_id"] %}
+
+            {% if id_m == master_id %}
+              <option selected value={{id_m}}>
+            {% else %}
+              <option value={{id_m}}>
+            {% endif %}
+              {{ combo_box.loc[i, "master_full_name"] }}
+              </option>
+          {% endfor %}
+          </select>
+   <p>Дата:
+     <input type="date" placeholder="Дата записи от" name="date_start">
+     до
+     <input type="date" placeholder="Дата записи до" name="date_end">
+      <input type="submit" value="Найти">
+              </p>
+        </form>
+      </p>
+    {% endmacro %}
+    {% macro render_table(table_name, relation) %}
+      <div class="tbl_container">
+        <p>
+          <b>{{table_name}} </b>
+        {% set n = len(relation) %}
+        </p>
+        <table>
+          <tr>
+            {% for name in relation.dtypes.index %}
+            <th>{{name}}</th>
+            {% endfor %}
+          </tr>
+
+          <tbody>
+            {% for i in range(n) %}
+            <tr>
+              {% for name in relation.dtypes.index %}
+                  <td> {{ relation.loc[i, name] }} </td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endmacro %}
+</head>
+<body>
+ <div class="menu">
+ <ul>
+     <li><a href={{url_for("record")}}>Записать</a></li>
+     <li class ="active"><a href={{url_for("index")}}>Мастера</a></li>
+     <li><a href={{url_for("client")}}>Клиенты</a></li>
+ </ul>
+ </div>
+ <div class="block">
+ <p>
+ <form action='' method ="get" name="">
+    {{render_form(combo_box)}}
+ </form>
+ </p>
+{{render_table("Записи мастера", master_record) }}
+ </div>
+
+</body>
+</html>

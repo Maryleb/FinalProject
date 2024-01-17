@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+ <title> Новый клиент </title>
+ {% macro render_form() %}
+
+   <b>Новый клиент</b>
+  <form class="new_client_form">
+   Имя клиента: <input type="text" name="client_name"><br>
+   Номер телефона клиента:  <input type="text" name="client_phone"><br>
+   <input type="submit" value="Добавить">
+  </form>
+
+ {% endmacro %}
+</head>
+
+<body>
+ <div class="menu">
+ </div>
+ <div class="block">
+      {{render_form()}}
+
+      <a href={{url_for("masters")}} class="back">Назад</a>
+ </div>
+
+</body>
+</html>

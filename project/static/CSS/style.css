@@ -1,0 +1,88 @@
+body {
+    width: 80%;
+    margin:auto;
+    max-width: 1000px;
+}
+
+.menu {
+ background-color: #f1f1f1;
+ box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.4);
+ width: 100%;
+}
+.menu li {
+ display: inline-block;
+ vertical-align: top;
+ padding: 10px;
+ color: #6f6d6d;
+}
+.menu a {
+ text-decoration: none;
+ color: #6f6d6d;
+ }
+.menu li:hover {
+ background-color: #BA55D3;
+ cursor: pointer;
+ color: #f8f8f8;
+}
+.menu ul {
+ padding: 0px;
+}
+.active{
+ background-color: #BA55D3;
+ color: #f8f8f8;
+}
+.active a:visited{
+ color: #f8f8f8;
+}
+.menu a:hover{
+ color: #f8f8f8;
+}
+.block {
+ padding: 10px 20px;
+}
+.tbl_container {
+  margin: 15px;
+}
+table {
+  border: solid 2px grey;
+}
+table tr:nth-child(odd) {
+  background-color: #ffffff;/* фон нечетных строк */
+}
+
+table tr:nth-child(even) {
+  background-color: #DDA0DD;/* фон четных строк */
+}
+th {
+  background-color: #DDA0DD;
+  padding: 5px;
+}
+td {
+  padding: 5px;
+}
+
+.record {
+    display: block;
+    padding: 10px;
+    background-color: #DDA0DD;
+    border: 1px solid black;
+    margin: 5px;
+    max-width: 120px;
+    text-decoration: none;
+    color: white;
+}
+
+.back {
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid black;
+    margin: 5px;
+    max-width: 120px;
+    text-decoration: none;
+}
+
+.new_client_form {
+    margin: 20px;
+    border: solid 1px grey;
+    padding: 10px;
+}

@@ -1,0 +1,62 @@
+<html>
+<head>
+ <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+ <title> Новый питомец </title>
+ {% macro render_form(combo_box) %}
+
+   <b>Новый питомец</b>
+  <form class="new_client_form">
+    Клиент:
+            <select name="client">
+          {% set n = len(combo_box) %}
+
+          {% for i in range(n) %}
+            {% set id_m = combo_box.loc[i, "client_id"] %}
+
+            {% if id_m == master_id %}
+              <option selected value={{id_m}}>
+            {% else %}
+              <option value={{id_m}}>
+            {% endif %}
+              {{ combo_box.loc[i, "client_name"] }} ( {{ combo_box.loc[i, "phone_number"] }} )
+              </option>
+          {% endfor %}
+          </select>
+  `     Кличка питомца: <input type="text" name="pet_name"><br>
+    Вес питомца: <input type="number" name="pet_weight" min="0"><br>
+    Характер питомца:
+    <select name="pet_mood">
+     <option disabled selected>-</option>
+      <option>спокойный</option>
+      <option>агрессивный</option>
+    </select>
+    <br>
+    Вид питомца: <select name="pet_type">
+      <option disabled selected>-</option>
+      <option>кошка</option>
+      <option>собака</option>
+    </select><br>
+    Порода питомца:<input type="text" name="pet_brade"><br>
+    Пол питомца:  <select name="pet_gender">
+      <option disabled selected>-</option>
+      <option>ж</option>
+      <option>м</option>
+    </select>`
+
+   <input type="submit" value="Добавить">
+  </form>
+
+ {% endmacro %}
+</head>
+
+<body>
+ <div class="menu">
+ </div>
+ <div class="block">
+      {{render_form(combo_box)}}
+
+      <a href={{url_for("masters")}} class="back">Назад</a>
+ </div>
+
+</body>
+</html>

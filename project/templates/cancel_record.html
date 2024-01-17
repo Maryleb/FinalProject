@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+ <title>Отмена записи</title>
+
+  {% macro render_form(combo_box) %}
+   <b>Отмена записи</b>
+      <p>Клиент:
+        <form>
+          <select name="client">
+          {% set n = len(combo_box) %}
+
+          {% for i in range(n) %}
+            {% set id_m = combo_box.loc[i, "client_id"] %}
+
+            {% if id_m == client_id %}
+              <option selected value={{id_m}}>
+            {% else %}
+              <option value={{id_m}}>
+            {% endif %}
+              {{ combo_box.loc[i, "client_name"] }}
+              </option>
+          {% endfor %}
+          </select>
+          <input type="date" name="date_record">
+          <input type="text" name="time_record">
+      <input type="submit" value="Отменить">
+        </form>
+      </p>
+    {% endmacro %}
+    {% macro render_table(table_name, relation) %}
+      <div class="tbl_container">
+        <p>
+          <b>{{table_name}} </b>
+        {% set n = len(relation) %}
+        </p>
+        <table>
+          <tr>
+            {% for name in relation.dtypes.index %}
+            <th>{{name}}</th>
+            {% endfor %}
+          </tr>
+
+          <tbody>
+            {% for i in range(n) %}
+            <tr>
+              {% for name in relation.dtypes.index %}
+                  <td> {{ relation.loc[i, name] }} </td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endmacro %}
+</head>
+
+<body>
+ <div class="menu">
+ </div>
+ <div class="block">
+      {{render_form(combo_box)}}
+      <a href={{url_for("record")}} method="get" class="back">Назад</a>
+ </div>
+
+</body>
+</html>
