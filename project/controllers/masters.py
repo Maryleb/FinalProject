@@ -21,7 +21,6 @@ def masters():
             pet_name = request.values.get('pet_name')
             master = int(request.values.get('master_double'))
 
-            print("hui")
             add_record(conn, client_id, date_time, pet_name, master)
 
     # вошли первый раз

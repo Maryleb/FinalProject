@@ -35,7 +35,6 @@ def execute_query(connection, query):
 
 
 def add_record(conn, client_id, date_time, pet_name, master):
- print('hueta')
  added = f'''
    UPDATE record SET pet_id = (
    SELECT pet_id
