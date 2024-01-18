@@ -8,7 +8,7 @@
         <form>
          <p> <select name="master">
           {% set n = len(combo_box) %}
-            <option value=0 disabled>Все мастера
+            <option value=0>Все мастера
           {% for i in range(n) %}
             {% set id_m = combo_box.loc[i, "master_id"] %}
 
@@ -36,7 +36,8 @@
           <form>
                 {% set n = len(relation) %}
                 {% for i in range(n) %}
-                      <input type="radio" value={{relation.loc[i,"record_date"]+relation.loc[i,"record_time"]+relation.loc[i,"master_full_name"]}} name="data">{{ relation.loc[i, "record_date"] }} {{ relation.loc[i, "record_time"] }} {{ relation.loc[i, "master_full_name"] }}<br>
+                        {% set id = str(relation.loc[i,"master_id"]) %}
+                      <input type="radio" value={{relation.loc[i,"record_date"]+relation.loc[i,"record_time"]+id}} name="data">{{ relation.loc[i, "record_date"] }} {{ relation.loc[i, "record_time"] }} {{ relation.loc[i, "master_full_name"] }}<br>
                 {% endfor %}
             <p> Клиент: <select name="client">
                       {% set n = len(combo_box) %}

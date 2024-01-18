@@ -57,7 +57,7 @@ def add_record(conn, client_id, record_date, record_time, pet_name, master):
    FROM master INNER JOIN timetable USING (master_id)
    INNER JOIN timetable_date USING (timetable_id)
    INNER JOIN record USING (timetable_date_id)
-   WHERE record_date == '{record_date}' AND record_time == '{record_time}' AND master_full_name LIKE '%{master}%'
+   WHERE record_date == '{record_date}' AND record_time == '{record_time}' AND master_id == {master}
    LIMIT 1)
  '''
  execute_query(conn, added)

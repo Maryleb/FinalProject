@@ -27,7 +27,7 @@ def record():
         data = request.values.get('data')
         record_date = data[:10]
         record_time = data[10:18]
-        master_name = data[18:]
+        master_name = int(data[18:])
         client_id = int(request.values.get('client'))
         pet_name = request.values.get('pet_name')
         add_record(conn, client_id, record_date, record_time, pet_name, master_name)
@@ -38,6 +38,7 @@ def record():
      combo_box = df_master,
      relation_free = df_free_record,
      combo_box1 = df_client,
-     len = len
+     len = len,
+        str = str
     )
     return html
